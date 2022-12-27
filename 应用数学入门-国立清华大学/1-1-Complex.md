@@ -410,43 +410,233 @@ $i^2 = e^{\ln(i^2)} = e^{2\ln i} = e^{2\ln(1e^{i(\frac{\pi}{2}+2n\pi)})} = e^{(4
 
 显然多值函数所有结果都相等，可见多值函数变为单值函数； 故我们一开始对虚部的定义是属于特殊情况；
 
+  
+
+## 复数级数
+
+复数级数的前N项和为：
+
+$S_N=z_1+z_2+...+z_N = \sum\limits_{n=1}^{N} z_n$
+
+例  $e^z$ 的麦克劳伦展开
+
+$S(z)=1+z+\frac{1}{2!}z^2+\frac{1}{3!}z^3+...=\sum\limits_{n=0}^\infin\frac{z^n}{n!}$
+
+
+
+## 等差级数
+
+$a_n = a_0 + nd$
+
+$Sn = a_0+(a_0+d)+(a_0+2d)+...+[a_0+(N-1)d]\\=\sum\limits_{n=0}^{N-1}(a_0+nd)\\=a_0\sum\limits_{n=0}^{N-1}1+d\sum\limits_{n=0}^{N-1}n\\=a_0N + d\frac{1}{2}N(N-1)$
 
 
 
 
 
+## 几何级数  等比级数
+
+$a_n = a_0 r^n$
+
+$S_N = a_0+a_0r+a_0r^2+...+a_0r^{N-1}=\sum\limits_{n=0}^{N-1}a_0 r^n$
+
+采用因式分解  由于其一定有一个 r=1 的解   也可以使用$S_n-S_{n-1}=-a_0+a_0r^N$解得
+
+$r^N-1 =(r-1)(r^{N-1}+r^{N-2}+...+r+1)=(r-1)\sum\limits_{n=0}^{N-1}r^n$
+
+$\sum\limits_{n=0}^{N-1}r^n = \frac{r^N-1}{r-1} \rightarrow S_N=\sum\limits_{n=0}^{N-1}a_0r^n = a_0\sum\limits_{n=0}^{N-1}r^n=a_0\frac{1-r^N}{1-r}$
+
+那么r为1的时候是什么情况，实际就是简化的等比级数；
 
 
 
+### 例1
+
+$S=1+\frac{2}{2}+\frac{3}{2^2}+\frac{4}{2^3}+..$
+
+该级数其实就是 $f(x)=1+2x+3x^2+...  ， x=\frac{1}{2}$  当时候的情况
+
+我们对整个式子积分
+
+$F(x)=\int_0^xf(x')dx'=x+x^2+x^3+...=\frac{x}{1-x}$
+
+再次微分
+
+$f(x)=\frac{dF}{dx}=\frac{d}{dx}[-1+\frac{1}{1-x}]=\frac{1}{(1-x)^2}$
+
+此时我们得到了
+
+$f(x)=1+2x+3x^2+... =\frac{1}{(1-x)^2} $
+
+$S = f(\frac{1}{2})=4$
+
+### 例2
+
+$S(\theta)=1+\cos\theta+\frac{\cos2\theta}{2!}+...$
+
+使用复数代数形式 可见 cos涉及的都是一个复数的实部 $e^{i\theta}=\cos\theta+i\sin\theta \rightarrow Re[e^{i\theta}]=\cos\theta$
+
+那么可以转化为 e 表达式取实部即可 
+
+$S(\theta)=Re[1+e^{i\theta}+\frac{1}{2!}e^{i2\theta}+\frac{1}{3!}e^{i3\theta}+...]$
+
+由于$e^{i\theta} =z$
+
+$S(\theta)=Re[1+z+\frac{1}{2!}z^2+\frac{1}{3!}z^3+...] = Re[e^z]=Re[e^{\cos\theta+i\sin\theta}] $
+
+$Re[e^{\cos\theta+i\sin\theta}]=Re[e^{\cos\theta}]Re[e^{i\sin\theta}]=Re[e^{\cos\theta}]Re[\cos(\sin\theta)+i\sin(\sin\theta)]=e^{\cos\theta}\cos(\sin\theta)$
 
 
 
+## 泰勒级数
+
+将一个函数表达为一个多项式级数的形式，是一种将任何可能是线性或非线性的函数近似转为线性处理的方法，以方便精度和算力控制，计算机内常用；
+
+即我们是否能够将任何函数表达为如下形式
+
+$f(x)=a_0+a_1x+a_2x^2+a_3x^3+...$
+
+对于这个假设我们发现
+
+$x=0 \rightarrow f(0) = a_0 \\ f'(0)=a_1 \\ f''(0)=2a_2 \rightarrow a_2=\frac{ f''(0) }{2!} \\... \\ f^{(n)}(0)=n!a_n \rightarrow a_n=\frac{ f^{(n)}(0) }{n!} $
+
+那么我们归纳可以得到 一个在原点展开的式子
+$$
+f(x)=f(0)+f'(0)x+\frac{f''(0)}{2!}x^2+...=\sum\limits^\infin_{n=0}\frac{f^{(n)}(0)}{n!}x^n
+$$
+但并非所有函数都有泰勒展开，其起码需要满足无限多阶可微分
+
+常见函数泰勒展开
+
+$e^x = 1+x + \frac{1}{2!}x^2+\frac{1}{3!}x^3+...$
+
+接下来我们推广到在某一点$x_0$展开，请保证函数在这一点有无限多阶可微
+
+$f(x)=a_0+a_1(x-x_0)+a_2(x-x_0)^2+a_3(x-x_0)^3+...$
+
+同样对函数在某一点$x_0$进行多阶微分，我们归纳可以得到 
+$$
+f(x)=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+...=\sum\limits^\infin_{n=0}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n
+$$
+物理应用
+
+simple harmonic oscillate 简谐振荡            
+
+任何平衡系统遭到干扰的时候，其位能都写为抛物线，可以泰勒展开，微分后胡克定律，简谐振荡   
 
 
 
+##  解析延拓 analytic continuation
 
 
 
+$f(z) = 1+z+z^2+... ,|z|<1$
+
+ <img src="1-1-Complex.assets/image-20221227122251055.png" alt="image-20221227122251055" style="zoom:50%;" />
+
+我们可以见到 在范数超过1的时候看上去好像没有解，但是其实在取-2时能够得到一个解；
+
+该问题引出至今没有解决的数论猜想问题 黎曼猜想；
+
+这里我们举个例子
+
+simple harmonic oscillate 简谐振荡   
+
+<img src="1-1-Complex.assets/image-20221227123947868.png" alt="image-20221227123947868" style="zoom:50%;" />
+
+一个做震动的机构，其滑块的质量会在运动时损耗
+
+$m=m_0-\Delta m$
+
+滑块的质量改变之后，其震动周期如何变动？
+
+假设损耗较小，设损耗比
+
+$g=\frac{\Delta m}{m_0}=1-\frac{m}{m_0} <<1$
+
+运动等式为
+
+$(m_0-\Delta m)\ddot x+kx=0$
+
+将所有内容无量纲化，拿到频率
+
+$周期表达为\omega_0^2=\frac{k}{m_0}  ,  假设\omega_0=1 ,   \omega_0t \rightarrow t ，\omega_0 量纲(1/s)$
+
+前后频率的比例
+
+$\alpha=\frac{\omega^2}{\omega_0^2}$
+
+整理得二阶等式
+
+$\ddot x + x -g\ddot x =0$
+
+微扰理论扩展
+
+$x(t)=x_0(t)+gx_1(t)+g^2x_2(t)+...$
+
+$x_0(t)=\cos(\sqrt{\alpha}t) \rightarrow \cos(\omega t),\omega_0=1$
+
+由于前后频率应该非常接近，那么就可以对频率得比例也做微扰理论扩展
+
+$\alpha=1+c_1g+c_2g^2+...$
+
+那么整理得到
+
+$x(t)=\cos(\sqrt{\alpha}t)+gx_1+g^2x_2+...$
+
+$(1-g)\ddot x=(1-g)x''(t)=-\alpha (1-g)\cos(\sqrt{\alpha}t)+(1-g)(g\ddot x_1+g\ddot x_2+...)$
+
+$=-\cos(\sqrt{\alpha}t)+g[(1-c_1)\cos(\sqrt{\alpha}t)+\ddot x_1]+g^2[(c_1-c_2)\cos(\sqrt{\alpha}t)+(\ddot x_2-\ddot x_1)]+...$
+
+根据二阶等式得到
+
+$\ddot x + x -g\ddot x =0 \rightarrow (1-g)\ddot x = -x$
+
+上式代入，对每个阶做相等,1阶如下
+
+$\ddot x_1 +x_1 + (1-c_1)\cos(\sqrt{\alpha}t)=0$
+
+常规解如下
+
+$x_1(t)=A\cos(t+\Phi)+B\cos(\sqrt{\alpha}t)$
+
+ 将常规解代入1阶等式
+
+$(1-\alpha)B\cos(\sqrt{\alpha}t) + (1-c_1)\cos(\sqrt{\alpha}t)=0$
+
+$(1-\alpha)B + (1-c_1) =0$
+
+故 
+
+$c_1=1 \  and\ B=0$
+
+$A= 0 \ and\  \Phi=0 \rightarrow x_1(t)=0$
+
+那么频率比则成为了级数和
+
+$\alpha = \frac{\omega^2}{\omega_0^2}=1+g+g^2+...=\sum\limits^\infin_{n=0}g^n=\frac{1}{1-g}$
 
 
 
+<img src="1-1-Complex.assets/image-20221227152728654.png" alt="image-20221227152728654" style="zoom:50%;" />
 
+$\beta(z)= i[1+i(g-1-i)+i^2(g-1-i)^2+... ]$
 
+$\gamma(z)= -1[1-(g-2)+(g-2)^2+...] $
 
+通用式为
 
+$f(z)=\frac{1}{1-z_0}\sum\limits^\infin_{n=0}(\frac{z-z_0}{1-z_0})^n$
 
+整个复平面空间内不同级数代表不同收敛圆，三个收敛圆都有交叠，那么可以使用一个表达式表达，即解析延拓；
 
+复数函数可以利用解析延拓使用同一个表达式表达多个有规律的范围圆
 
+$\alpha(z)=\beta(z)=\gamma(z)=\frac{1}{1-z}$
 
+$\alpha(-2)=\frac{1}{3}$
 
-
-
-
-
-
-
-
-
+所以导致看起来没有解的位置出现了解；
 
 
 
