@@ -907,7 +907,7 @@ $M|x\rangle = |y\rangle$
 $M|m\rangle = \lambda|m\rangle$
 这里我们称 $\lambda$  为本征值，一个矩阵不一定有本征向量和本征值，且不一定有N个本征向量，且本征向量不一定都垂直；
 
-#### 例
+#### 例 求矩阵的  本征值  和  本征向量
 
 $\left (\begin{matrix}
 5 & -2     \\
