@@ -894,9 +894,7 @@ $RR^{-1}=R^{-1}R=\mathbf{1}=RR^\top=R^\top R$
 
 
 
-### 本征向量 
-
-
+### 本征向量
 
 有一矩阵对向量操作：  
 
@@ -904,11 +902,10 @@ $M|x\rangle = |y\rangle$
 
 <img src="1-3-Linear-Algebra.assets/image-20230114161739998.png" alt="image-20230114161739998" style="zoom:50%;" />
 
-那么这个变换方式是否有可能，在变换前后使得向量方向不变 ，只有大小变化
+那么这个变换方式是否有可能，在变换前后使得向量方向不变 ，只有大小变化？
 
 $M|m\rangle = \lambda|m\rangle$
-
-这里我们称 $\lambda$  为本征值 ；
+这里我们称 $\lambda$  为本征值，一个矩阵不一定有本征向量和本征值，且不一定有N个本征向量，且本征向量不一定都垂直；
 
 #### 例
 
@@ -1055,6 +1052,137 @@ $M|v\rang
 (\sum\limits_i^m \lambda|\vec V_i\rang \lang \vec V_i|) |v\rang
   $
 所以可以得到 $M = \sum\limits_i^m \lambda|\vec V_i\rang \lang \vec V_i|$
+
+
+
+----
+
+
+
+
+
+### 洛伦兹变换 详解
+
+<img src="1-3-Linear-Algebra.assets/image-20230114171246059.png" alt="image-20230114171246059" style="zoom:50%;" />
+
+我们直接使用本章粗略讲解洛伦兹时候的简化式开始，
+$$
+\left (\begin{matrix}ct' \\ x' \end {matrix}\right )=  \left (\begin{matrix}\cosh\alpha  & -\sinh\alpha  \\-\sinh\alpha &  \cosh\alpha  \\\end {matrix}\right )\left (\begin{matrix}ct  \\ x  \end {matrix}\right )\\
+$$
+同时我们也设定了如下表达
+
+$\cosh \alpha=\gamma=\frac{1}{\sqrt{1-(u/c)^2}} $
+
+$\sinh\alpha=\frac{\gamma u}{c}=\frac{u/c}{\sqrt{1-(u/c)^2}} $
+
+$\cosh^2x-\sinh^2x=1$
+
+现在，我们开始对变换矩阵做对角化，行列式
+
+$\left |\begin{matrix}
+\cosh\alpha -\lambda  & -\sinh\alpha  \\
+-\sinh\alpha &  \cosh\alpha -\lambda  \\
+\end {matrix}\right |
+=0
+\Rightarrow 
+(\lambda-\cosh\alpha)^2-\sinh^2\alpha
+\Rightarrow 
+\lambda_\pm=\cosh\alpha\pm\sinh\alpha$
+
+由此开始求洛伦兹矩阵的本征向量
+
+$\left (\begin{matrix}
+\cosh\alpha  & -\sinh\alpha  \\
+-\sinh\alpha &  \cosh\alpha  \\
+\end {matrix}\right )
+\left (\begin{matrix}
+a  \\ 
+b  \\
+\end {matrix}\right ) 
+=
+\lambda_\pm
+\left (\begin{matrix}
+a  \\ 
+b  \\
+\end {matrix}\right )
+\Rightarrow 
+b= \mp a
+\Rightarrow 
+v_1 =\frac{1}{\sqrt{2}}
+\left (\begin{matrix}
+1  \\ 
+-1  \\
+\end {matrix}\right ),
+v_2 =\frac{1}{\sqrt{2}}
+\left (\begin{matrix}
+1  \\ 
+1  \\
+\end {matrix}\right ) 
+$
+
+那么这些本征向量和本征值的物理意义是什么？
+
+观察 a 和 b 的本征向量内的比例关系，可见其 x轴 和 时间 无论向前或向后运动比例都相同，
+无论在何种坐标系观察有一个东西的速度总是不变，那么我们知道光速才有这个特性；
+
+![image-20230114171258569](1-3-Linear-Algebra.assets/image-20230114171258569.png)
+
+所以我们通过求得洛伦兹转换矩阵的本征向量获得了光速不变性的佐证   $x=\pm ct$
+
+那么本征值是什么物理意义？我们定义一个光
+
+$\omega = c k$
+
+$\left (\begin{matrix}
+\omega' \\ 
+ck' \end {matrix}\right )
+=  
+\left (\begin{matrix}
+\cosh\alpha  & -\sinh\alpha  \\
+-\sinh\alpha &  \cosh\alpha  \\
+\end {matrix}\right )
+\left (\begin{matrix}
+\omega    \\ 
+ck  	\\
+\end {matrix}\right )  
+\\ $
+
+$\left (\begin{matrix}
+\omega' \\ 
+\omega \end {matrix}\right )
+=  
+\left (\begin{matrix}
+\cosh\alpha  & -\sinh\alpha  \\
+-\sinh\alpha &  \cosh\alpha  \\
+\end {matrix}\right )
+\left (\begin{matrix}
+\omega    \\ 
+\omega   	\\
+\end {matrix}\right )  
+\\ $
+
+$\omega'= (\cosh\alpha-\sinh\alpha)\omega
+\rightarrow
+\frac{\omega'}{\omega}=\cosh\alpha-\sinh\alpha   
+$
+
+由于我们上述的定义
+
+$\frac{\omega'}{\omega}
+=\frac{1}{\sqrt{1-(u/c)^2}} - \frac{u/c}{\sqrt{1-(u/c)^2}}
+=\frac{1-u/c}{\sqrt{(1-u/c)(1+u/c)}} 
+=\sqrt{\frac{1-u/c}{1+u/c}}
+=\sqrt{\frac{c-u}{c+u}} 
+< 1$
+
+这里本征值表达就是光的多普勒效应
+如果换一个对面的位置做观察，同样可以和上述类似步骤得到 $\sqrt{\frac{c+u}{c-u}} >1  $
+
+
+
+
+
+
 
 
 

@@ -571,7 +571,7 @@ $$
 \sum\limits_i^m |\vec V_i\rang \lang \vec V_i| =I  
 $$
 
-##### 构造原矩阵
+#### 构造原矩阵
 
 我们可以根据本征向量$\vec V_i$  和本征值$\lambda$得到如下
 $$
@@ -616,6 +616,176 @@ $M|v\rang
 (\sum\limits_i^m \lambda|\vec V_i\rang \lang \vec V_i|) |v\rang
   $
 所以可以得到 $M = \sum\limits_i^m \lambda|\vec V_i\rang \lang \vec V_i|$
+
+
+
+------
+
+将时间引入三维空间，得到四维线性空间；
+$$
+\left (\begin{matrix}ct' \\ x' \\ y' \\ z'  \end {matrix}\right )=  \left (\begin{matrix}\gamma & -\gamma\frac{u}{c} & 0 & 0  \\-\gamma\frac{u}{c}& \gamma  & 0 & 0  \\0 & 0 & 1 & 0  		\\0 & 0 & 0 & 1  		\\\end {matrix}\right )\left (\begin{matrix}ct  \\ x  \\ y  \\ z   \end {matrix}\right )\\\gamma = \frac{1}{\sqrt{1-(u/c)^2}}
+$$
+我们进行简化 去掉两个不影响的轴
+
+洛伦兹转换 的向量空间 叫做 闵可夫斯基空间 ，这会导致可以使用三角表达矩阵中元素；
+
+$\cosh \alpha=\gamma=\frac{1}{\sqrt{1-(u/c)^2}} $
+
+$\sinh\alpha=\frac{\gamma u}{c}=\frac{u/c}{\sqrt{1-(u/c)^2}} $
+
+$\cosh^2x-\sinh^2x=1$
+
+那么上述变化简化为
+
+
+
+-----
+
+
+
+### 洛伦兹变换 详解
+
+<img src="temp.assets/image-20230114162741610.png" alt="image-20230114162741610" style="zoom:50%;" />
+
+我们直接使用本章粗略讲解洛伦兹时候的简化式开始，
+$$
+\left (\begin{matrix}ct' \\ x' \end {matrix}\right )=  \left (\begin{matrix}\cosh\alpha  & -\sinh\alpha  \\-\sinh\alpha &  \cosh\alpha  \\\end {matrix}\right )\left (\begin{matrix}ct  \\ x  \end {matrix}\right )\\
+$$
+同时我们也设定了如下表达
+
+$\cosh \alpha=\gamma=\frac{1}{\sqrt{1-(u/c)^2}} $
+
+$\sinh\alpha=\frac{\gamma u}{c}=\frac{u/c}{\sqrt{1-(u/c)^2}} $
+
+$\cosh^2x-\sinh^2x=1$
+
+现在，我们开始对变换矩阵做对角化，行列式
+
+$\left |\begin{matrix}
+\cosh\alpha -\lambda  & -\sinh\alpha  \\
+-\sinh\alpha &  \cosh\alpha -\lambda  \\
+\end {matrix}\right |
+=0
+\Rightarrow 
+(\lambda-\cosh\alpha)^2-\sinh^2\alpha
+\Rightarrow 
+\lambda_\pm=\cosh\alpha\pm\sinh\alpha$
+
+由此开始求洛伦兹矩阵的本征向量
+
+$\left (\begin{matrix}
+\cosh\alpha  & -\sinh\alpha  \\
+-\sinh\alpha &  \cosh\alpha  \\
+\end {matrix}\right )
+\left (\begin{matrix}
+a  \\ 
+b  \\
+\end {matrix}\right ) 
+=
+\lambda_\pm
+\left (\begin{matrix}
+a  \\ 
+b  \\
+\end {matrix}\right )
+\Rightarrow 
+b= \mp a
+\Rightarrow 
+v_1 =\frac{1}{\sqrt{2}}
+\left (\begin{matrix}
+1  \\ 
+-1  \\
+\end {matrix}\right ),
+v_2 =\frac{1}{\sqrt{2}}
+\left (\begin{matrix}
+1  \\ 
+1  \\
+\end {matrix}\right ) 
+$
+
+那么这些本征向量和本征值的物理意义是什么？
+
+观察 a 和 b 的本征向量内的比例关系，可见其 x轴 和 时间 无论向前或向后运动比例都相同，
+无论在何种坐标系观察有一个东西的速度总是不变，那么我们知道光速才有这个特性；
+
+<img src="temp.assets/image-20230114165343287.png" alt="image-20230114165343287" style="zoom: 50%;" />
+
+所以我们通过求得洛伦兹转换矩阵的本征向量获得了光速不变性的佐证   $x=\pm ct$
+
+那么本征值是什么物理意义？我们定义一个光
+
+$\omega = c k$
+
+$\left (\begin{matrix}
+\omega' \\ 
+ck' \end {matrix}\right )
+=  
+\left (\begin{matrix}
+\cosh\alpha  & -\sinh\alpha  \\
+-\sinh\alpha &  \cosh\alpha  \\
+\end {matrix}\right )
+\left (\begin{matrix}
+\omega    \\ 
+ck  	\\
+\end {matrix}\right )  
+\\ $
+
+$\left (\begin{matrix}
+\omega' \\ 
+\omega \end {matrix}\right )
+=  
+\left (\begin{matrix}
+\cosh\alpha  & -\sinh\alpha  \\
+-\sinh\alpha &  \cosh\alpha  \\
+\end {matrix}\right )
+\left (\begin{matrix}
+\omega    \\ 
+\omega   	\\
+\end {matrix}\right )  
+\\ $
+
+$\omega'= (\cosh\alpha-\sinh\alpha)\omega
+\rightarrow
+\frac{\omega'}{\omega}=\cosh\alpha-\sinh\alpha   
+$
+
+由于我们上述的定义
+
+$\frac{\omega'}{\omega}
+=\frac{1}{\sqrt{1-(u/c)^2}} - \frac{u/c}{\sqrt{1-(u/c)^2}}
+=\frac{1-u/c}{\sqrt{(1-u/c)(1+u/c)}} 
+=\sqrt{\frac{1-u/c}{1+u/c}}
+=\sqrt{\frac{c-u}{c+u}} 
+< 1$
+
+这里本征值表达就是光的多普勒效应
+如果换一个对面的位置做观察，同样可以和上述类似步骤得到 $\sqrt{\frac{c+u}{c-u}} >1  $
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+我们发现这里矩阵很类似转动，其实就是时间和某个轴向的混杂；
+
+我们在一般坐标中看到 $x=vt$ , 那么 在另一个运动系中应该看到的是 $x'=v't'$
+$$
+\left (\begin{matrix}ct' \\ x' \end {matrix}\right )=  \left (\begin{matrix}\cosh\alpha  & -\sinh\alpha  \\-\sinh\alpha &  \cosh\alpha  \\\end {matrix}\right )\left (\begin{matrix}ct  \\ vt \end {matrix}\right ) =\left (\begin{matrix}\cosh\alpha\cdot ct  -\sinh\alpha\cdot vt  \\-\sinh\alpha\cdot ct + \cosh\alpha\cdot vt \\\end {matrix}\right )
+$$
+
+$$
+v'=\frac{x'}{t'}=\frac{-\sinh\alpha\cdot ct + \cosh\alpha\cdot vt}{\cosh\alpha\cdot t  -\sinh\alpha\cdot vt/c} =\frac{v-\tanh\alpha\cdot c}{1-\tanh\alpha\cdot v/c} \\\tanh\alpha=\frac{u}{c} \\v'=\frac{v-u}{1-\frac{uv}{c^2}}
+$$
+
+
 
 
 
