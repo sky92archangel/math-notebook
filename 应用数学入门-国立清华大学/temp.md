@@ -11,381 +11,7 @@ $$
 
 [TOC]
 
-
-### 矩阵
-
-
-
-$|y\rangle = A | x \rangle \rightarrow \sum\limits_j A_{ij} x_j = y_i $
-$$
-A_{ij}=\langle \hat e_i | A | \hat e_j \rangle
-$$
-该公式即为 一个矩阵 对两个基向量分别做投影，仅保留这两个基向量在矩阵内产生的影响值，以确定矩阵该处的元素值；
-
-狄拉克符号  bra & ket
-
-$|a\rangle = \sum\limits_{i=1}^{N}a_i  | \hat e_i \rangle $       ，ket ， 竖向量
-
-$ \langle a| = \sum\limits_{i=1}^{N}  \langle\hat e_i | a_i^* $      ，bra， 横向量
-
-内积 
-
-$\langle x| y \rangle = \sum\limits_ix_i^* y_i \ , \  \langle y|x \rangle = \sum\limits_i y_i^* x_i = \langle x|y \rangle ^*$
-
-
-
-### 矩阵规则
-
-$$
-(A+B)_{ij} = A_{ij} + B_{ij} \\ 
-(\lambda A)_{ij}=\lambda A_{ij} \\
-(AB)_{ij} = \sum\limits_k A_{ik}B{kj}
-$$
-
-#### 例1 三维空间转动
-
-<img src="temp.assets/image-20230107134154842.png" alt="image-20230107134154842" style="zoom:50%;" />
-
-有向量 $\vec v$
-
-$ R_z(\theta)\vec v = \vec v'$
-
-$v_x' = v_x\cos\theta -v_y\sin\theta$
-
-$v_y' = v_x\sin\theta +v_y\cos\theta$
-
-$v_z' =v_z  $
-
-我们可以将其写为矩阵
-$$
-\left (\begin{matrix}
-v_x' \\ v_y' \\ v_z'  
-\end {matrix}\right )
-=  
-\left (\begin{matrix}
-\cos\theta & -\sin\theta & 0   \\
-\sin\theta & \cos\theta  & 0   \\
-0 & 0 & 1  		\\ 
-\end {matrix}\right )
-\left (\begin{matrix}
- v_x  \\ v_y  \\ v_z   
-\end {matrix}\right )
-$$
-我们开始考察基向量旋转的情况
-
-<img src="temp.assets/image-20230107135258859.png" alt="image-20230107135258859" style="zoom:50%;" />
-
-可见
-
-$\hat i' = \cos\theta\hat i+\sin\theta\hat j$ 
-
-$\left (\begin{matrix}
-i_x' \\ i_y' \\ i_z'  
-\end {matrix}\right )
-=  
-\left (\begin{matrix}
-\cos\theta &  [] & []   \\
-\sin\theta &  [] &  []  \\
-0 & []  &  [] \\ 
-\end {matrix}\right )
-\left (\begin{matrix}
-1  \\ 0  \\ 0   
-\end {matrix}\right )$
-
-针对其他基向量也是一样的操作，
-
-那么最后就能够将中间的矩阵构建出来
-
-
-
-
-
-那么沿着三个轴旋转的矩阵就能够得到
-$$
-R_z(\theta)
-=  
-\left (\begin{matrix}
-\cos\theta & -\sin\theta & 0   \\
-\sin\theta & \cos\theta  & 0   \\
-0 & 0 & 1  		\\ 
-\end {matrix}\right ) \\
-R_x(\theta)
-=  
-\left (\begin{matrix}
-1  & 0 &  0	\\ 
-0 & \cos\theta & -\sin\theta \\
-0 & \sin\theta & \cos\theta  \\
-\end {matrix}\right )\\
-R_y(\theta)
-=  
-\left (\begin{matrix}
-\cos\theta& 0 &  \sin\theta    \\
-0 & 1 & 0  		\\ 
--\sin\theta& 0 & \cos\theta     \\
-\end {matrix}\right )
-$$
-
->  定义 交换子 commutator
->
-> $[A,B]\equiv AB-BA$
-
-我们构造一个交换子式子，该式表达为 【绕x转转动】 【绕y轴转动】  两个动作先后不同导致的结果是否一样？
-
-$[R_x,R_y] =R_x R_y-R_y R_x $ 
-
-直接将旋转90度带入上述旋转式子即可证明，旋转动作的先后会导致结果不同；
-
-所以 
-
-$[R_x,R_y] =R_x R_y-R_y R_x \neq 0 $ 
-
-
-
-
-
-### 矩阵转置
-
-转置简单表现为将一个矩阵 行列互换
-
-$(A^\top)_{ij} = A_{ji}$
-
-#### 例 
-
-$R_z(\theta)
-=  
-\left (\begin{matrix}
-\cos\theta & -\sin\theta & 0   \\
-\sin\theta & \cos\theta  & 0   \\
-0 & 0 & 1  		\\ 
-\end {matrix}\right ) \\
-R_z^\top(\theta)
-=  
-\left (\begin{matrix}
-\cos\theta & \sin\theta & 0   \\
--\sin\theta & \cos\theta  & 0   \\
-0 & 0 & 1  		\\ 
-\end {matrix}\right ) \\$
-
-$(R^\top)_{ij} = R_{ji}$
-
-把它们乘起来
-
-$R_z(\theta)R_z^\top(\theta)
-=  
-\left (\begin{matrix}
-\cos\theta & -\sin\theta & 0   \\
-\sin\theta & \cos\theta  & 0   \\
-0 & 0 & 1  		\\ 
-\end {matrix}\right )
-\left (\begin{matrix}
-\cos\theta & \sin\theta & 0   \\
--\sin\theta & \cos\theta  & 0   \\
-0 & 0 & 1  		\\ 
-\end {matrix}\right ) 
-=  
-\left (\begin{matrix}
-1 & 0 & 0   \\
-0 & 1 & 0   \\
-0 & 0 & 1   \\ 
-\end {matrix}\right ) = \delta_{ij} $
-
-
-
-### 正交矩阵
-
-定义为 ，和自己的转置相乘的结果为单位阵
-
-$R_z R_z^\top =\delta_{ij} =\mathbf{1} $
-
-
-
-### 赫尔米特共轭 / 厄米共轭
-
-当矩阵运算中带有复数的时候，变换后需进行厄米共轭 ，匕首dagger 符号即为 共轭并转置
-
-$(A^\dagger)_{ij}=A^*_{ji}$  也就是 $ A^\dagger  = (A^*)^\top $ $ A^\dagger  = (A^\top )^*$
-
-若整个矩阵为实数矩阵 ，那么其厄米共轭的结果和dagger结果一样
-
-$A_{real}^* = A_{real}^\dagger$
-
-
-
-例 
-$$
-(AB)^\dagger =B^\dagger A^\dagger
-$$
-$[(AB)^\dagger]_{ij} = (AB)^* _{ji} = \sum\limits_kA_{jk}^*B_{ki}^* = \sum\limits_k(A^\dagger)_{kj}(B^\dagger)_{ik}= \sum\limits_k(B^\dagger)_{ik}(A^\dagger)_{kj}=(B^\dagger A^\dagger)_{ij}$
-
-同样的证明方法用在实数矩阵上就证明 $(AB)^\top =B^\top A^\top $
-
-
-
-
-
---------
-
-### 矩阵的迹 Trace
-
-方阵的迹定义为 对角线元素的和
-
-$TrA=\sum\limits_i^N A_{ii} = A_{11}+A_{22}+...+A_{NN}$
-
-当我们有三个矩阵 对其乘积求迹
-
-$Tr(ABC) = \sum\limits_i(ABC)_{ii}=\sum\limits_{ijk}A_{ij}B_{jk}C_{ki}=\sum\limits_{ijk}B_{jk}C_{ki}A_{ij}=\sum\limits_j(BCA)_{jj}=Tr(BCA)$
-
-同理证得
-
-$Tr(ABC)=Tr(CAB)=Tr(BCA)$
-
-这个顺序是轮换形式，故  $Tr(CBA) $ 是不在上述等式中的
-
-
-
-### 行列式Determinant
-
-行列式背后具有列维-奇维塔张量定义 内容较为复杂 后期会讲
-
-$detA=|A| =  
-\left |\begin{matrix}
-A_{11} & A_{12} & A_{13}   \\ 
-A_{21} & A_{22} & A_{23}   \\ 
-A_{31} & A_{32} & A_{33}   \\ 
-\end {matrix}\right | \\  =   
-(A_{11}A_{22}A_{33}+A_{12}A_{23}A_{31}+A_{13}A_{21}A_{32})-(A_{13}A_{22}A_{31}+A_{12}A_{21}A_{33}+A_{11}A_{23}A_{32}) $
-
-其正负的判定总结为
-
-$(123),(231),(312) + \\ (132),(213),(321)  -$
-
-即可写为   $(-1)^P$ P为该序列回到 123 顺序时 需要交换位置的次数（每次都是两个互换）
-
-如 
-
-$(231) \rightarrow (132) \rightarrow (123) \ \  P = 2 为偶数 $
-
-$(321) \rightarrow (123) \ 1，3互换一次即可 \     P=1 为奇数 $
-
-N阶矩阵行列式展开后会有 $N!$ 个子项
-
-### 行列式的简单定义
-
-$detA = \sum\limits_{perm}(-1)^P A_{1P_1}A_{2P_2}A_{3P_3} \\ (P_1P_2P_3) = (123),(312),...$
-
-如果据某行或者某列进行展开的就是拉普拉斯展开
-
-对每个元素展开所得到的降维行列式在高中教材称之为代数余子式
-
-$detA = A_{11}C_{11}+A_{12}C_{12}+A_{13}C_{13}$
-
-$C_{ij}=(-1)^{i+j}M_{ij}$
-
-$C_{11} =(-1)^{1+1} =  
-\left |\begin{matrix}
-A_{22} & A_{23} \\ 
-A_{32} & A_{33} \\  
-\end {matrix}\right | \\$
-
-$C_{12} =(-1)^{1+2} =  
-\left |\begin{matrix}
-A_{21} & A_{23} \\ 
-A_{31} & A_{33} \\  
-\end {matrix}\right | \\$
-
-#### 例 三维转动的拉普拉斯展开
-
-$|R_z(\theta)|
-=  
-\left |\begin{matrix}
-\cos\theta & -\sin\theta & 0   \\
-\sin\theta & \cos\theta  & 0   \\
-0 & 0 & 1  		\\ 
-\end {matrix}\right |   
-=  
-0-0+  
-\left |\begin{matrix}
-\cos\theta & -\sin\theta    \\
-\sin\theta & \cos\theta     \\ 
-\end {matrix}\right | 
-=\cos^2\theta-(-\sin^2\theta)=1$
-
-一个向量在空间中转动的时候其长度不变
-
-
-
-### 行列式性质
-
-##### 1 无论是否转置 方阵的行列式结果不变
-
-$|A^\top|=|A|$
-
-证：
-
-$detA = \sum\limits_{perm}(-1)^P A_{1P_1}A_{2P_2}A_{3P_3} =detA = \sum\limits_{perm}(-1)^Q A_{Q_11}A_{Q_22}A_{Q_33} $
-
-##### 2 共轭并转置的情况
-
-$|A^\dagger|  = |A|^* $
-
-证：
-
-$|A^\dagger|=|(A^*)^\top|=|A^*|=|A|^*$
-
-##### 3 行之间互换 或者 列之间互换
-
-$|A|=-|A'|$
-
-证：
-
-$detA'=\sum\limits_{perm}(-1)^P A'_{1P'_1}A'_{2P'_2}A'_{3P'_3}=\sum\limits_{perm}(-1)^P A'_{1P'_1}A'_{3P'_2}A'_{2P'_3}=\sum\limits_{perm}(-1)^P A'_{1P'_1}A'_{2P'_3}A'_{3P'_2}$
-
-由于  正负判定交换一次需要变换正负   $(P_1P_3P_2) = -(P_1P_2P_3)$
-
-$\sum\limits_{perm}(-1)^P A'_{1P'_1}A'_{2P'_3}A'_{3P'_2} =- \sum\limits_{perm}(-1)^P A'_{1P'_1}A'_{2P'_2}A'_{3P'_3} = -detA = detA'$
-
-##### 4 乘积
-
-$|\lambda A| = \lambda^N|A| $
-
-##### 5 行之间或列之间有相同的 那么结果为 0
-
-$if \ A_{i.}=A_{j.} \ or \ A_{.i}=A_{.j} \,then \ |A|=0$
-
-##### 6 将某行翻倍加到另一行上 结果不变  (列之间也一样)
-
-$ 
-\left |\begin{matrix}
-a & b \\ 
-c & d \\  
-\end {matrix}\right | =  
-\left |\begin{matrix}
-a+\lambda b & b \\ 
-c+\lambda d & d \\  
-\end {matrix}\right | $
-
-##### 7 分配
-
-$|AB|=|A||B|$
-
-$|AB...Z|=|A||B|...|Z|$
-
-
-
-### 逆矩阵
-
-常用式
-
-$A|x\rangle = |y\rangle$
-
-<img src="temp.assets/image-20230114122951774.png" alt="image-20230114122951774" style="zoom:67%;" />
-
-是否可以找出一个反作用的矩阵 从答案寻求源头呢
-
-$A^{-1}|y\rangle = |x\rangle$；
-
-并非所有矩阵都有逆矩阵，就是说具有不可逆的线性操作
-其实就是有些操作会消弭被操作数据的特征，导致逆操作无法讲原有数据的特征和细节还原出来；
+ 
 
 #### 逆矩阵存在判定
 
@@ -397,7 +23,7 @@ $detA = 0 $   称为  singular  matrix
 
  non-singular  matrix  存在逆矩阵
 
-$A^{-1}|y\rangle = |x\rangle \rightarrow A^{-1}A|x\rangle = |x\rangle \rightarrow A^{-1}A=\mathbf{1}$
+$A^{-1}|y\rangle = |x\rangle \rightarrow A^{-1}A|x\rangle = |x\rangle \rightarrow A^{-1}A=I$
 
 $A |x\rangle = |y\rangle \rightarrow A A^{-1}|y\rangle = |y\rangle \rightarrow AA^{-1}=\mathbf{1}$
 
@@ -568,7 +194,7 @@ $
 
 所有的本征向量与自己外积和的结果为单位阵
 $$
-\sum\limits_i^m |\vec V_i\rang \lang \vec V_i| =I  
+\sum\limits_i^m |\vec V_i\rang \lang \vec V_i| =I
 $$
 
 #### 构造原矩阵
@@ -764,26 +390,276 @@ $\frac{\omega'}{\omega}
 
 
 
+------
+
+### 矩阵对角化
+
+首先并非所有矩阵都可以对角化，需要能够求出特征向量和特征值，且数量和其秩等同才行；
+
+在一个正交空间A中有矩阵M，我们使用该空间自身的正交基表达这个矩阵，但该矩阵每个位置都有非0元素，而我们想要对其做简化；
+于是我们将该矩阵M自身的一组特征向量和特征值求出（我简称 **特征库**，特征库包含了特征向量和特征值以及构建规则），再次计算该组**特征库**对空间A的正交基的各方面影响，即**特征库**中的特征向量替换为正交空间A基向量，此时就将矩阵M的特征向量影响去除，仅留下特征值影响，而特征值仅仅影响每个特定方向，故会出现非常规整的对角矩阵，由此完成对矩阵M的对角化简化；
+
+其实我们可以假设一个M 为待定的**核心矩阵** ，其在不同正交基构成的空间中的表达不同；
+
+$M_{ij}=\lang e_i| M | e_j\rang$   一组正交基构成空间A，两个基底表达为 I J  ，然后该核心矩阵在空间A中的表达如此，此时该表达是非解耦的；
+
+核心矩阵使用自己的特征库表达出来，两个基底表达为 K W  ，（假设二维可按两个方向展开表达）；
+所有正交基与自身转置外积之和为单位阵（或翻倍），注意这里的特征向量不一定是单位向量，但是建议将其单位化 
+
+ $ M = \sum\limits_k c_k|\vec v_k\rang\lang \vec v_k| = \sum\limits_w c_w|\vec v_w\rang\lang \vec v_w|$
+
+那么将核心矩阵的表达代入其在空间A的表达 ，即为 将特征库应用到A空间表达出来，核心矩阵特征向量最终消弭
+
+$D_{ij}=\lang \vec v_i|M|\vec v_j\rang =
+\lang \vec v_i|(\sum\limits_k c_k|\vec v_k\rang\lang \vec v_k|)|\vec v_j\rang =
+\sum\limits_k c_k\lang \vec v_i|\vec v_k\rang\lang \vec v_k|\vec v_j\rang =
+\sum\limits_k c_k\delta_{ik}\delta_{kj}  =
+\sum\limits_k c_k\delta_{ij} \\
+\rightarrow
+D_{ij} =c_i\delta_{ij}=c_j\delta_{ij}$
+
+此时我们得到了一个对角矩阵，整个对角上的数字即为核心矩阵M的各个特征值；
+
+至此，将原有矩阵在空间A中解耦为对角矩阵，其实对角化方法可用简单的高斯消元法进行；
 
 
 
+### 相似矩阵
 
+例：
 
+依旧使用矩阵
+$
+M_{ij} = \lang e_i|M|e_j \rang
+=
+\left (\begin{matrix}
+5 & -2     \\
+-2 & 2     \\ 
+\end {matrix}\right )  $   
 
+我们之前计算过其特征值为 $m=1,6$  
+特征向量
 
+$V_1=
+\frac{1}{\sqrt{5}}
+\left (\begin{matrix}
+1     \\
+2     \\ 
+\end {matrix}\right ) ,m=1$
+$V_2
+=
+\frac{1}{\sqrt{5}}
+\left (\begin{matrix}
+-2     \\
+1     \\ 
+\end {matrix}\right ) ,m=6
+$
 
+由上述对角化得到其对角矩阵为
+$D_{ij} = \lang m_i|M|m_j\rang =
+\left (\begin{matrix}
+1 & 0     \\
+0 & 6     \\ 
+\end {matrix}\right )  $
 
+虽然我们可以使用高斯消元法做对角化 ， 但我们这里使用狄拉克符号做计算；
 
-我们发现这里矩阵很类似转动，其实就是时间和某个轴向的混杂；
+我们看到两个正交基  的关系其实就是一个线性变换，这里由于同原点则可看作转动
 
-我们在一般坐标中看到 $x=vt$ , 那么 在另一个运动系中应该看到的是 $x'=v't'$
+$|m_j\rang=S|e_j\rang
+\rightarrow
+S_{ij}=\lang e_i|S|e_j\rang 
+=
+\lang e_i|m_j\rang$
+
+接下来我们需要证明如下一个相似变换：
 $$
-\left (\begin{matrix}ct' \\ x' \end {matrix}\right )=  \left (\begin{matrix}\cosh\alpha  & -\sinh\alpha  \\-\sinh\alpha &  \cosh\alpha  \\\end {matrix}\right )\left (\begin{matrix}ct  \\ vt \end {matrix}\right ) =\left (\begin{matrix}\cosh\alpha\cdot ct  -\sinh\alpha\cdot vt  \\-\sinh\alpha\cdot ct + \cosh\alpha\cdot vt \\\end {matrix}\right )
+S^{-1}MS=D
 $$
+证：
 
-$$
-v'=\frac{x'}{t'}=\frac{-\sinh\alpha\cdot ct + \cosh\alpha\cdot vt}{\cosh\alpha\cdot t  -\sinh\alpha\cdot vt/c} =\frac{v-\tanh\alpha\cdot c}{1-\tanh\alpha\cdot v/c} \\\tanh\alpha=\frac{u}{c} \\v'=\frac{v-u}{1-\frac{uv}{c^2}}
-$$
+由于S变化是转动，那么其逆矩阵即为其转置矩阵  $S^{-1}=S^\top$
+
+$
+(S^{-1}MS)_{ij}
+=
+(S^{\top}MS)_{ij}
+= 
+\sum\limits_{kw} S^{\top}_{ik}  M_{kw}  S_{wj} 
+=
+\sum\limits_{kw} \lang m_i|e_k\rang   \lang e_k|M|e_w\rang \lang e_w|m_j\rang 
+=
+\lang m_i|M|m_j\rang = m_i\delta_{ij} = D_{ij}
+$
+
+该动作叫相似转换
+
+### 对角矩阵应用
+
+#### 对角矩阵的计算
+
+$D_{ij} = d_i\delta_{ij}$
+
+$D^2_{ij}=\sum\limits_k D_{ik}D_{kj}=\sum\limits_k d_i\delta_{ik}d_j\delta_{kj} = d_i^2\delta_{ij}
+\rightarrow
+(D^n)_{ij}=d_i^n\delta_{ij}$
+
+也可从相似转换看到  $M=SDS^{-1}$
+
+$M^n=M \cdot M \cdot M... = (SDS^{-1})(SDS^{-1})(SDS^{-1})...=S(D \cdot D \cdot D ...)S^{-1}=SD^nS^{-1}$
+
+**可见对角矩阵相乘结果还是对角矩阵**
+
+### 交换矩阵：
+
+$[A,B]=AB-BA=0$
+
+$(AB)_{ij}=\sum\limits_k a_i\delta_{ik}b_k\delta_{kj}=a_ib_i\delta_{ij}$
+
+$(BA)_{ij}=\sum\limits_k b_i\delta_{ik}a_k\delta_{kj}=b_i a_i\delta_{ij}=a_ib_i\delta_{ij}$
+
+也可从相似转换看到,若AB为可对角化的非对角矩阵，此时矩阵是一般的样子
+
+$A'=SAS^{-1} \rightarrow A=S^{-1}A'S$
+
+$B'=SBS^{-1} \rightarrow B=S^{-1}B'S$
+
+$[A',B']=A'B'-B'A' \\=
+SAS^{-1} \cdot SBS^{-1} - SBS^{-1} \cdot SAS^{-1} =
+SABS^{-1} - SBAS^{-1} \\=
+S(AB-BA)S^{-1}=S[A,B]S^{-1}=0$
+
+如果两个矩阵使用相同的基底都可以对角化，那么这两者为交换矩阵，即便其表达方式不一定是对角化的；
+
+#### 例 二次曲线
+
+<img src="temp.assets/image-20230121172730267.png" alt="image-20230121172730267" style="zoom:50%;" />
+
+我们有公式来表达平面上的椭圆
+
+$5x^2-4xy+2y^2=30$ 
+
+也可以写为
+
+$\left (\begin{matrix}
+x & y    
+\end {matrix}\right ) 
+\left (\begin{matrix}
+5 & -2     \\
+-2 & 2     \\ 
+\end {matrix}\right ) 
+\left (\begin{matrix}
+x   \\
+y   \\ 
+\end {matrix}\right )
+=30 $
+
+如果我们使用其对角矩阵来替换这个看起来一般的矩阵
+
+$\left (\begin{matrix}
+x' & y'    
+\end {matrix}\right ) 
+\left (\begin{matrix}
+1 & 0     \\
+0 & 6     \\ 
+\end {matrix}\right ) 
+\left (\begin{matrix}
+x'   \\
+y'   \\ 
+\end {matrix}\right )
+=30 
+\rightarrow
+x'^2+y'^2=30$
+
+其表达就成了一个标准椭圆公式，只不过我们取的不是现有直角坐标系的基向量来表达；
+
+
+
+
+
+#### 例：再提耦合振子
+
+![image-20230101114604364](temp.assets/image-20230101114604364-1674293943196.png)
+
+我们写出该模型的运动方程Equations Of Motion EOM；
+
+$m\frac{d^2x_1}{dt^2}=-k_1x_1+k_{12}(x_2-x_1) \\ m\frac{d^2x_2}{dt^2}=-k_2x_2-k_{12}(x_2-x_1)$
+
+将该式展开 可以拟出一个矩阵
+
+$m \left (\begin{matrix}
+\ddot x_1   \\
+\ddot x_2   \\ 
+\end {matrix}\right ) 
+=
+-\left (\begin{matrix}
+k_1+k_{12} & -k_{12}   \\
+-k_{12} & k_2+k_{12}    \\ 
+\end {matrix}\right ) 
+\left (\begin{matrix}
+x_1   \\
+x_2   \\ 
+\end {matrix}\right )$
+
+我们得到了一个对称的实数矩阵，那么如果此处的$k_{12}=0$ 那么两个物体的运动则充分解耦，其实也就是说中间弹簧不参与力的运算，即处于自然状态，那么其实就是两个物体运动方式一样；我们可是使用特征向量来证明；
+
+为了简化 我们将所有的弹簧力取为K 即为 $K_1=K_2=K_{12}=K$
+
+那么中间的振动矩阵就简化为如下
+
+$IK=
+\left (\begin{matrix}
+2K & -K   \\
+-K & 2K   \\ 
+\end {matrix}\right ) $
+
+我们求这个矩阵的特征值和特征向量
+
+$IK=
+\left |\begin{matrix}
+2K & -K   \\
+-K & 2K   \\ 
+\end {matrix}\right |=0
+\rightarrow
+(\lambda-2K)^2-K^2=0 
+\rightarrow
+\lambda=K,3K$
+
+$|K\rang = 
+\frac{1}{\sqrt{2}}
+\left (\begin{matrix}
+1   \\
+1   \\ 
+\end {matrix}\right ) 
+,
+|3K\rang = 
+\frac{1}{\sqrt{2}}
+\left (\begin{matrix}
+1   \\
+-1   \\ 
+\end {matrix}\right ) $
+
+由此我们得到两个特征向量 以及两个特征值 ，
+两个特征向量互不影响，那么就代表了该系统的两个特殊的振动，特殊振动中两个振子互不影响、互相独立，
+这两个振动一个是上述的中间弹簧不参与力的运算的同相运动，还有一个就是同时相向并相离（相向）振动； 
+
+<img src="temp.assets/image-20230121175045498.png" alt="image-20230121175045498" style="zoom:50%;" />
+
+同向振动时，频率为 $\omega_1 = \sqrt{\frac{K}{m}}$
+
+相向振动时，频率为 $\omega_2 = \sqrt{\frac{3K}{m}}$
+
+ 
+
+
+
+
+
+
+
+
+
+
 
 
 
