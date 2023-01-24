@@ -84,7 +84,11 @@ $$
 $\int^\pi_{-\pi}f(x)dx=\int^\pi_{-\pi}a_0dx+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}a_n\cos nx dx+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}b_n\sin nx dx =
 a_0\int^\pi_{-\pi}dx+0+0=a_0x|^\pi_{-\pi}=2\pi a_0$
 
-于是可以得到       $a_0=\frac{1}{2\pi}\int^\pi_{-\pi}f(x)dx$   这个公式有时为了后续计算方便通常两侧都乘2 得到   $2a_0= a_0'= \int^\pi_{-\pi}f(x)dx$ 
+于是可以得到       $a_0=\frac{1}{2\pi}\int^\pi_{-\pi}f(x)dx$   ，这个公式有时为了后续计算方便通常两侧都乘2 得到 
+$$
+ a_0=\frac{1}{2\pi}\int^\pi_{-\pi}f(x)dx ,  a'_0=\frac{1}{\pi}\int^\pi_{-\pi}f(x)dx  
+$$
+
 
 
 
@@ -95,16 +99,31 @@ $\int^\pi_{-\pi}f(x)\cos mx dx \\
 =0+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}a_n\cos nx\cos mx dx+0$
 
 此时我们观察到 上式仅在$n=m$的时候出现非零项
-$\int^\pi_{-\pi}f(x)\cos mx dx =\int^\pi_{-\pi}a_n\cos^2 mx dx $
+
+$\int^\pi_{-\pi}f(x)\cos nx dx =a_n\int^\pi_{-\pi}\cos^2 nx dx=a_n\pi $
+$$
+a_n = \frac{1}{\pi}\int^\pi_{-\pi}f(x)\cos nx dx
+$$
 
 
+接下来求解 $b_n$  我们对等式两侧乘以 $\sin mx$ 然后对两侧进行积分
+
+$\int^\pi_{-\pi}f(x)\sin mx dx \\
+=\int^\pi_{-\pi}a_0\sin mxdx+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}a_n\cos nx\sin mx dx+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}b_n\sin nx \sin mxdx\\
+=0+0+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}b_n\sin nx\sin mx dx$
+
+此时我们观察到 上式仅在$n=m$的时候出现非零项
+
+$\int^\pi_{-\pi}f(x)\cos nx dx =b_n\int^\pi_{-\pi}\sin^2 nx dx=b_n\pi $
+$$
+b_n = \frac{1}{\pi}\int^\pi_{-\pi}f(x)\sin nx dx
+$$
 
 
-
-
-
-
-
+那么我们得到了完整的傅里叶级数的展开
+$$
+f(x)= \frac{a'_0}{2} +\sum\limits^\infin_{n=1}a_n\cos nx+\sum\limits^\infin_{n=1}b_n\sin nx= a_0 +\sum\limits^\infin_{n=1}a_n\cos nx+\sum\limits^\infin_{n=1}b_n\sin nx \\  a'_0=\frac{1}{\pi}\int^\pi_{-\pi}f(x)dx, a_0=\frac{1}{2\pi}\int^\pi_{-\pi}f(x)dx \\  a_n=\frac{1}{\pi}\int^\pi_{-\pi}f(x)\cos nxdx \\  b_n=\frac{1}{\pi}\int^\pi_{-\pi}f(x)\sin nxdx
+$$
 
 
 
