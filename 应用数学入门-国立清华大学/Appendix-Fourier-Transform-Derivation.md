@@ -300,12 +300,14 @@ $$
 $$
 F(\omega)=\int^\infin_{-\infin}f(t)e^{-i\omega t} dt
 $$
-而整体拿出来 就是傅里叶逆向变换
+而整体拿出来 就是傅里叶逆向变换 IFT
 $$
-\frac1{2\pi} \int^\infin_{-\infin}F(\omega) e^{i\omega t} d\omega
+f(t)=\frac1{2\pi} \int^\infin_{-\infin}F(\omega) e^{i\omega t} d\omega
 $$
-
-
+傅里叶变换简化写法就是拉普拉斯变换 Lplace-Transform   LT
+$$
+F(S)=\int^\infin_{-\infin}f(t)e^{-S t} dt
+$$
 
 
 
