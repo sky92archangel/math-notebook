@@ -95,8 +95,7 @@ $$
 f(x)=\sum\limits^\infin_{n=0}a_n\cos nx+\sum\limits^\infin_{n=0}b_n\sin nx \\ f(x)=a_0\cos0x+\sum\limits^\infin_{n=1}a_n\cos nx+b_0\sin0x+\sum\limits^\infin_{n=1}b_n\sin nx=a_0+\sum\limits^\infin_{n=1}a_n\cos nx+\sum\limits^\infin_{n=1}b_n\sin nx
 $$
 
-
-我们需要求出这里的 $a_0$ ,
+### 我们需要求出这里的 $a_0$ 
 
 对上述第二式两边积分 
 $\int^\pi_{-\pi}f(x)dx=\int^\pi_{-\pi}a_0dx+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}a_n\cos nx dx+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}b_n\sin nx dx =
@@ -109,8 +108,9 @@ $$
 
 
 
+### 接下来求  $a_n$  
 
-接下来求  $a_n$  ，我们对等式两侧乘以 $\cos mx$ ，然后两侧进行积分 
+我们对等式两侧乘以 $\cos mx$ ，然后两侧进行积分 
 
 $\int^\pi_{-\pi}f(x)\cos mx dx \\
 =\int^\pi_{-\pi}a_0\cos mxdx+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}a_n\cos nx\cos mx dx+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}b_n\sin nx \cos mxdx\\
@@ -123,8 +123,7 @@ $$
 a_n = \frac{1}{\pi}\int^\pi_{-\pi}f(x)\cos nx dx
 $$
 
-
-接下来求解 $b_n$  
+### 接下来求解 $b_n$  
 
 我们对等式两侧乘以 $\sin mx$ 然后对两侧进行积分
 
