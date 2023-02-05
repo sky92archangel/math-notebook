@@ -298,15 +298,15 @@ $$
 
 ### 夫琅禾费衍射  fraunhofer diffraction
 
+<img src="1-4-Fourier-Transform.assets/image-20230205113844295.png" alt="image-20230205113844295" style="zoom: 50%;" />
 
+一束光通过光栅，会发生衍射，在不同角度都可能产生结果，假设某次结果如图，那么光最终到墙面的强度时什么？光原有强度为  $\vec K_{in}=(K,0)=(\frac{2\pi}\lambda,0)$
 
+首先看狭缝数量，将其简化为函数，这里是双狭缝：
 
+<img src="1-4-Fourier-Transform.assets/image-20230205114608394.png" alt="image-20230205114608394" style="zoom:67%;" />
 
-
-
-
-
-
+这里直接给出结论  终点的强度为 $I(\theta) = \frac{2\pi}{r^2_0}|\tilde f(K\sin\theta)|^2$
 
 
 
