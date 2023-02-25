@@ -39,7 +39,7 @@ $\int^\pi_{-\pi} \cos mx \cos nx dx =0  , n\neq m$
 
 $\vec a \cdot \vec b = |\vec a||\vec b|\cos\phi = |\vec a||\vec b| \cdot 0=0$ 就平面上来说正交是这样，那么如果用向量表达出来，假设两者在n维度场：
 
-$\vec a \cdot \vec b = a_1 b_1+a_2 b_2+...+a_n b_n=\sum\limits^\infin_{i=1}a_i b_i=0$
+$\vec a \cdot \vec b = a_1 b_1+a_2 b_2+...+a_n b_n=\sum\limits^\infty_{i=1}a_i b_i=0$
 
 如果上述求和公式并非取整数，而是连续实数，那么上述的求和就成为了积分；
 
@@ -71,7 +71,7 @@ $\int^\pi_{-\pi} \cos nx \cos mx dx , n=m\neq0  \rightarrow \\
 
 那么我们将上述所有三角函数正交的情况罗列出来：
 $$
-\int^\pi_{-\pi} \sin nx \cos mx dx =0 \\ 
+\int^\pi_{-\pi} \sin nx \cos mx dx =0 \\
 $$
 
 $$
@@ -95,26 +95,26 @@ $$
 f(x)=\sum\limits^\infin_{n=0}a_n\cos nx+\sum\limits^\infin_{n=0}b_n\sin nx \\ f(x)=a_0\cos0x+\sum\limits^\infin_{n=1}a_n\cos nx+b_0\sin0x+\sum\limits^\infin_{n=1}b_n\sin nx=a_0+\sum\limits^\infin_{n=1}a_n\cos nx+\sum\limits^\infin_{n=1}b_n\sin nx
 $$
 
-### 我们需要求出这里的 $a_0$ 
+### 我们需要求出这里的 $a_0$
 
 对上述第二式两边积分 
-$\int^\pi_{-\pi}f(x)dx=\int^\pi_{-\pi}a_0dx+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}a_n\cos nx dx+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}b_n\sin nx dx =
+$\int^\pi_{-\pi}f(x)dx=\int^\pi_{-\pi}a_0dx+\int^\pi_{-\pi}\sum\limits^\infty_{n=1}a_n\cos nx dx+\int^\pi_{-\pi}\sum\limits^\infty_{n=1}b_n\sin nx dx =
 a_0\int^\pi_{-\pi}dx+0+0=a_0x|^\pi_{-\pi}=2\pi a_0$
 
 于是可以得到       $a_0=\frac{1}{2\pi}\int^\pi_{-\pi}f(x)dx$   ，这个公式有时为了后续计算方便通常两侧都乘2 得到 
 $$
- a_0=\frac{1}{2\pi}\int^\pi_{-\pi}f(x)dx ,  a'_0=\frac{1}{\pi}\int^\pi_{-\pi}f(x)dx  
+a_0=\frac{1}{2\pi}\int^\pi_{-\pi}f(x)dx ,  a'_0=\frac{1}{\pi}\int^\pi_{-\pi}f(x)dx
 $$
 
 
 
-### 接下来求  $a_n$  
+### 接下来求  $a_n$
 
 我们对等式两侧乘以 $\cos mx$ ，然后两侧进行积分 
 
 $\int^\pi_{-\pi}f(x)\cos mx dx \\
-=\int^\pi_{-\pi}a_0\cos mxdx+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}a_n\cos nx\cos mx dx+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}b_n\sin nx \cos mxdx\\
-=0+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}a_n\cos nx\cos mx dx+0$
+=\int^\pi_{-\pi}a_0\cos mxdx+\int^\pi_{-\pi}\sum\limits^\infty_{n=1}a_n\cos nx\cos mx dx+\int^\pi_{-\pi}\sum\limits^\infty_{n=1}b_n\sin nx \cos mxdx\\
+=0+\int^\pi_{-\pi}\sum\limits^\infty_{n=1}a_n\cos nx\cos mx dx+0$
 
 此时我们观察到 上式仅在$n=m$的时候出现非零项
 
@@ -123,13 +123,13 @@ $$
 a_n = \frac{1}{\pi}\int^\pi_{-\pi}f(x)\cos nx dx
 $$
 
-### 接下来求解 $b_n$  
+### 接下来求解 $b_n$
 
 我们对等式两侧乘以 $\sin mx$ 然后对两侧进行积分
 
 $\int^\pi_{-\pi}f(x)\sin mx dx \\
-=\int^\pi_{-\pi}a_0\sin mxdx+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}a_n\cos nx\sin mx dx+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}b_n\sin nx \sin mxdx\\
-=0+0+\int^\pi_{-\pi}\sum\limits^\infin_{n=1}b_n\sin nx\sin mx dx$
+=\int^\pi_{-\pi}a_0\sin mxdx+\int^\pi_{-\pi}\sum\limits^\infty_{n=1}a_n\cos nx\sin mx dx+\int^\pi_{-\pi}\sum\limits^\infty_{n=1}b_n\sin nx \sin mxdx\\
+=0+0+\int^\pi_{-\pi}\sum\limits^\infty_{n=1}b_n\sin nx\sin mx dx$
 
 此时我们观察到 上式仅在$n=m$的时候出现非零项
 
@@ -206,12 +206,12 @@ $$
 带入上述的工程表达得到傅里叶级数的复数表达
 
 $f(t) \\=
-\frac{a'_0}{2}+\frac{1}{2}\sum\limits^\infin_{n=1}a_n(e^{in\omega t}+e^{-in\omega t})+\frac{-1}{2}i\sum\limits^\infin_{n=1}b_n(e^{in\omega t}-e^{-in\omega t}) \\=
-\frac{a'_0}{2}+\frac{1}{2}\sum\limits^\infin_{n=1} (a_n-ib_n)e^{in\omega t} +\frac{1}{2}\sum\limits^\infin_{n=1}(a_n+ib_n)e^{-in\omega t}$
+\frac{a'_0}{2}+\frac{1}{2}\sum\limits^\infty_{n=1}a_n(e^{in\omega t}+e^{-in\omega t})+\frac{-1}{2}i\sum\limits^\infty_{n=1}b_n(e^{in\omega t}-e^{-in\omega t}) \\=
+\frac{a'_0}{2}+\frac{1}{2}\sum\limits^\infty_{n=1} (a_n-ib_n)e^{in\omega t} +\frac{1}{2}\sum\limits^\infty_{n=1}(a_n+ib_n)e^{-in\omega t}$
 
-观察上述式子 ， 将第三项的n的范围改变符号 得到  $\frac{1}{2}\sum\limits^{-1}_{n=-\infin}(a_{-n}+ib_{-n})e^{in\omega t}$
+观察上述式子 ， 将第三项的n的范围改变符号 得到  $\frac{1}{2}\sum\limits^{-1}_{n=-\infty}(a_{-n}+ib_{-n})e^{in\omega t}$
 
-此时可以发现n的取值成了 $n\in(-\infin,\infin)$，出现了可以合并的项  $e^{in\omega t}$  ，最后式子就变为  $\sum\limits^{\infin}_{-\infin}C_n e^{in\omega t}$
+此时可以发现n的取值成了 $n\in(-\infty,\infty)$，出现了可以合并的项  $e^{in\omega t}$  ，最后式子就变为  $\sum\limits^{\infty}_{-\infty}C_n e^{in\omega t}$
 
 于是 
 $$
@@ -259,12 +259,12 @@ $$
  我们已经得到了傅里叶级数的复数表达；
 $$
 f_T(t)=f(t+T),\omega_0 = \frac{2\pi}T，\omega_0为基频率\\
-f_T(t)=\sum\limits^{\infin}_{n=-\infin}C_n e^{in\omega_0 t}  \\ 
+f_T(t)=\sum\limits^{\infty}_{n=-\infty}C_n e^{in\omega_0 t}  \\ 
 C_n=\frac1T \int^{\frac T2}_{-\frac T2}f_T(t)e^{-in\omega_0 t}dt
 $$
 上述函数原表达，求和式，以及系数式；
 
-其求和式中 $\sum\limits^\infin_{-\infin}$   和  $e^{in\omega_0 t}$  两者 对于任意的傅里叶级数都是一样，已经是一种固定规则了，仅仅由  $C_n$ 来决定不同样式的傅里叶级数，这系数是一个复数；
+其求和式中 $\sum\limits^\infty_{-\infty}$   和  $e^{in\omega_0 t}$  两者 对于任意的傅里叶级数都是一样，已经是一种固定规则了，仅仅由  $C_n$ 来决定不同样式的傅里叶级数，这系数是一个复数；
 
 其实把求和式展开，$ ... + c_{-1}e^{-i(-1)\omega_0 t}+ c_{0}e^0+ c_1 e^{i(1)\omega_0 t}+ c_2e^{-i(2)\omega_0 t} +...$ , 表现为如下右图；
 
@@ -276,24 +276,24 @@ $$
 
 那么如果一个函数不是周期函数，或者说整个函数就一个周期？
 
-那么其周期就趋于无穷，此时就成了一般函数 $\lim\limits_{T\to\infin}f_T(t)-f(t) $   
+那么其周期就趋于无穷，此时就成了一般函数 $\lim\limits_{T\to\infty}f_T(t)-f(t) $   
 
-对基频率来说   $T \to \infin $  ,此时   $\Delta\omega = (n+1)\omega_0-n\omega_0=\omega_0 = \frac{2\pi}T $  周期增加导致频率间隔变小，当趋于无穷则频率间隔无限小；
+对基频率来说   $T \to \infty $  ,此时   $\Delta\omega = (n+1)\omega_0-n\omega_0=\omega_0 = \frac{2\pi}T $  周期增加导致频率间隔变小，当趋于无穷则频率间隔无限小；
 此时我们可以将傅里叶级数频率的离散情况，转为连续情况，即各个有微小差异的频率稠密的顺序排在一起组成了频率函数（离散级数成连续函数）；
 
 把系数式代入求和式  得到 混合式：
 
-$f_T(t)=\sum\limits^{\infin}_{n=-\infin}\frac1T \int^{\frac T2}_{-\frac T2}f_T(t)e^{-in\omega_0 t}dt e^{in\omega_0 t},\frac1T=\frac{\Delta\omega}{2\pi}，T \to \infin$
+$f_T(t)=\sum\limits^{\infty}_{n=-\infty}\frac1T \int^{\frac T2}_{-\frac T2}f_T(t)e^{-in\omega_0 t}dt e^{in\omega_0 t},\frac1T=\frac{\Delta\omega}{2\pi}，T \to \infty$
 
 可见当周期无限时会出现如下情况：
 
-$  \int^{\frac T2}_{-\frac T2} dt \to \int^\infin_{-\infin} dt \\
+$  \int^{\frac T2}_{-\frac T2} dt \to \int^\infty_{-\infty} dt \\
    n\omega_0 \to \omega  \\
-\sum\limits^{\infin}_{n=-\infin}\Delta\omega\to \int^{\infin}_{-\infin}d\omega$
+\sum\limits^{\infty}_{n=-\infty}\Delta\omega\to \int^{\infty}_{-\infty}d\omega$
 
 将这些变化代入上述混合式得到：
 $$
-\frac1{2\pi} \int^\infin_{-\infin}\int^\infin_{-\infin}f(t)e^{-i\omega t} dt \  e^{i\omega t} d\omega
+\frac1{2\pi} \int^\infty_{-\infty}\int^\infty_{-\infty}f(t)e^{-i\omega t} dt \  e^{i\omega t} d\omega
 $$
 这个二重积分里层积分拿出来 就是 傅里叶变换FT
 $$
